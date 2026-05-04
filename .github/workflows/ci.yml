@@ -21,9 +21,16 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest pytest-cov
+        pip install pytest pytest-cov httpx  # httpx es necesario para TestClient en FastAPI
+        
+    - name: Prepare Data and Model for Tests
+      run: |
+        # Generamos los archivos necesarios para que los tests no fallen[cite: 1]
+        python src/data/ingesta.py
+        python src/data/preprocesamiento.py
+        python src/models/entrenamiento.py
         
     - name: Run Tests with Coverage
       run: |
-        # Requisito de la guía: Cobertura >= 70%
+        # Ejecutamos con el umbral del 70% exigido
         pytest --cov=src tests/ --cov-fail-under=70
