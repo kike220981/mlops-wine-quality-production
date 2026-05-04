@@ -1,0 +1,19 @@
+# Stage 1: Constructor[cite: 1]
+FROM python:3.9-slim as builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+# Stage 2: Ejecución (Imagen final ligera)[cite: 1, 2]
+FROM python:3.9-slim
+WORKDIR /app
+
+# Copiamos solo las librerías instaladas y el código
+COPY --from=builder /root/.local /root/.local
+COPY . .
+
+# Aseguramos que los ejecutables de Python estén en el PATH
+ENV PATH=/root/.local/bin:$PATH
+
+EXPOSE 8000
+CMD ["uvicorn", "src.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
