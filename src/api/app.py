@@ -23,16 +23,20 @@ def predict(data: WineData):
     if not os.path.exists(MODEL_PATH) or not os.path.exists(SCALER_PATH):
         raise HTTPException(status_code=503, detail="Modelo no disponible. Ejecute el entrenamiento primero.[cite: 1]")
     
-    try:
-        # 2. Cargar artefactos
+try:
         model = joblib.load(MODEL_PATH)
         scaler = joblib.load(SCALER_PATH)
         
-        # 3. Convertir input a DataFrame usando el método moderno model_dump()
-        data_dict = data.model_dump()
-        df_input = pd.DataFrame([data_dict.values()], columns=data_dict.keys())
+        # 1. Definir el orden exacto de las columnas que espera el modelo
+        cols = ["fixed_acidity", "volatile_acidity", "citric_acid", "residual_sugar", 
+                "chlorides", "free_sulfur_dioxide", "total_sulfur_dioxide", 
+                "density", "pH", "sulphates", "alcohol"]
         
-        # 4. Escalar y Predecir[cite: 1]
+        # 2. Crear el diccionario y asegurar que el DataFrame tenga las columnas en orden
+        data_dict = data.model_dump()
+        df_input = pd.DataFrame([data_dict])[cols] # Forzamos el orden de las columnas
+        
+        # 3. Escalar y Predecir
         X_scaled = scaler.transform(df_input)
         prediction = model.predict(X_scaled)
         
@@ -41,4 +45,5 @@ def predict(data: WineData):
             "label": "Alta Calidad" if prediction[0] == 1 else "Calidad Estándar"
         }
     except Exception as e:
+        # Esto te ayudará a ver el error real en los logs de GitHub si vuelve a fallar
         raise HTTPException(status_code=500, detail=str(e))
