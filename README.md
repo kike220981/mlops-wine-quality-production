@@ -66,6 +66,7 @@ pip install -r requirements.txt
 
 ```bash
 python src/data/ingesta.py
+python src/data/preprocesamiento.py
 ```
 
 * **Entrenamiento:**
