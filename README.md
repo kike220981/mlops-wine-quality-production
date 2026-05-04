@@ -128,6 +128,6 @@ Gestión basada en SCRUM/Kanban con GitHub Projects:
 
 ## 👤 Autor
 
-* **Kike**
+* **Enrique Sánchez Antuña**
 * Asignatura: Metodologías de Desarrollo y Despliegue de Aplicaciones para Ciencia de Datos (20GIAR)
 * Profesor: Federico Muñoz Babiano
