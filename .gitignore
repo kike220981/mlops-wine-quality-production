@@ -1,4 +1,37 @@
+<<<<<<< HEAD
 __pycache__/
 *.pyc
 .env
 .terraform/
+=======
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# --- Artefactos de ML (Crítico para MLOps) ---
+# Evitamos subir datos y modelos; el pipeline los gestionará[cite: 1]
+src/data/*.csv
+*.pkl
+*.joblib
+mlruns/
+
+# --- Infraestructura (Terraform) ---
+# No subir el estado de la nube ni credenciales[cite: 1]
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# --- Tests y Cobertura (Requisito >70%) ---
+# No queremos subir los reportes temporales de los tests[cite: 2]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Otros ---
+.vscode/
+.DS_Store
+>>>>>>> 7ec82cf451e70d806d98f878379f752c2edfe272
