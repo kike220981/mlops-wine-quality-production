@@ -11,6 +11,9 @@ def ejecutar_ingesta():
         # Los datos vienen separados por punto y coma (;)
         df = pd.read_csv(url, sep=';')
         
+        # NORMALIZACIÓN: Reemplazar espacios por guiones bajos
+        df.columns = [col.replace(' ', '_') for col in df.columns]
+
         # Asegurar que la carpeta existe
         os.makedirs('src/data', exist_ok=True)
         
