@@ -6,9 +6,12 @@ import os
 
 app = FastAPI(title="Wine Quality API", description="API de producción para MLOps[cite: 2]")
 
-# Rutas de los artefactos generados por el pipeline
-MODEL_PATH = "src/models/modelo_vino.joblib"
-SCALER_PATH = "src/models/scaler.joblib"
+import os
+
+# Obtener la ruta base del proyecto de forma absoluta
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+MODEL_PATH = os.path.join(BASE_DIR, "src", "models", "modelo_vino.joblib")
+SCALER_PATH = os.path.join(BASE_DIR, "src", "models", "scaler.joblib")
 
 @app.get("/")
 def home():
