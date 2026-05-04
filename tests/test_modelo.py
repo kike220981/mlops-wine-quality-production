@@ -1,5 +1,6 @@
 import joblib
 import os
+import pandas as pd
 
 def test_model_exists():
     # Verifica que el entrenamiento generó el archivo .joblib
