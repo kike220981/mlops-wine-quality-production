@@ -90,7 +90,7 @@ El proyecto prioriza la robustez mediante pruebas automatizadas:
 * Cobertura de tests: **92.5%** (supera el 70% requerido)
 
 ```bash
-pytest --cov=src tests/
+python -m pytest --cov=src tests/
 ```
 
 ---
