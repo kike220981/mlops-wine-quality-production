@@ -87,7 +87,7 @@ uvicorn src.api.app:app --reload
 
 El proyecto prioriza la robustez mediante pruebas automatizadas:
 
-* Cobertura de tests: **92.5%** (supera el 70% requerido)
+* Cobertura de tests: **88%** (supera el 70% requerido)
 
 ```bash
 python -m pytest --cov=src tests/
