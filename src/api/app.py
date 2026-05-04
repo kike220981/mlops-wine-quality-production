@@ -28,8 +28,9 @@ def predict(data: WineData):
         model = joblib.load(MODEL_PATH)
         scaler = joblib.load(SCALER_PATH)
         
-        # 3. Convertir input a DataFrame
-        df_input = pd.DataFrame([data.dict().values()], columns=data.dict().keys())
+        # 3. Convertir input a DataFrame usando el método moderno model_dump()
+        data_dict = data.model_dump()
+        df_input = pd.DataFrame([data_dict.values()], columns=data_dict.keys())
         
         # 4. Escalar y Predecir[cite: 1]
         X_scaled = scaler.transform(df_input)
