@@ -7,7 +7,7 @@ El desarrollo se ha estructurado en un Product Backlog de 6 User Stories, ejecut
 
 Sprint 1: Cimentación de Datos: Ingesta automatizada y normalización de cabeceras (snake_case) para asegurar la integridad del pipeline.
 
-Sprint 2: Modelado y Calidad: Entrenamiento con RandomForestClassifier y validación exhaustiva con una cobertura de tests del 92.5%.
+Sprint 2: Modelado y Calidad: Entrenamiento con RandomForestClassifier y validación exhaustiva con una cobertura de tests del 88%.
 
 Sprint 3: Despliegue e Infraestructura: Desarrollo de la API con FastAPI, contenedorización con Docker y provisión de infraestructura con Terraform.
 
