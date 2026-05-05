@@ -29,4 +29,4 @@ Validación de entorno y dependencias.
 
 Ejecución del pipeline de datos.
 
-Pruebas unitarias y de integración con pytest (Cobertura alcanzada: 92.5%).
+Pruebas unitarias y de integración con pytest (Cobertura alcanzada: 88%).
